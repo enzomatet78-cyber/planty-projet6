@@ -1,0 +1,140 @@
+/*
+CTC Separate Stylesheet
+Updated: 2026-03-28 09:16:21
+*/
+
+/* =============================================
+   HEADER / NAV BAR - Maquette Figma
+   ============================================= */
+
+.ast-primary-header-bar,
+.main-header-bar {
+    min-height: 80px;
+    height: 80px;
+    padding: 0;
+}
+
+.site-header {
+    background-color: #FFFFFF;
+}
+
+.ast-primary-header-bar {
+    border-bottom: none;
+    box-shadow: none;
+}
+
+/* =============================================
+   LOGO - Titre du site
+   ============================================= */
+
+.site-title a {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    color: #DC9F96 !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.site-title a:hover {
+    color: #DC9F96 !important;
+}
+
+/* Icone feuille verte apres le logo */
+.site-title a::after {
+    content: "\2666";
+    color: #326238;
+    font-size: 14px;
+    margin-left: 5px;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+/* =============================================
+   MENU PRINCIPAL - Flexbox order
+   ============================================= */
+
+.ast-nav-menu {
+    display: flex !important;
+    align-items: stretch;
+}
+
+/* Reordering: NOUS RENCONTRER (82) first, Administration second, Commander (81) last */
+#menu-item-82 {
+    order: 1;
+}
+
+/* Administration (3rd li without specific ID) */
+.ast-nav-menu .menu-item:not([id]):not([class*="page_item"]) {
+    order: 2;
+}
+
+#menu-item-81 {
+    order: 3;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 80px;
+    display: flex;
+    align-items: stretch;
+}
+
+/* Liens du menu en Syne Regular noir */
+.ast-nav-menu .menu-link,
+.main-header-menu .menu-item > a {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    color: #000000 !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    padding: 0 20px !important;
+    line-height: 80px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* =============================================
+   BOUTON COMMANDER - dernier element
+   ============================================= */
+
+#menu-item-81 > a.menu-link {
+    background-color: #DC9F96 !important;
+    color: #FFFFFF !important;
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    padding: 0 40px !important;
+    line-height: 80px !important;
+    height: 80px !important;
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    margin: 0 !important;
+}
+
+#menu-item-81 > a.menu-link:hover {
+    background-color: #c98880 !important;
+    color: #FFFFFF !important;
+}
+
+/* Normaliser le texte NOUS RENCONTRER */
+#menu-item-82 > a.menu-link {
+    text-transform: none !important;
+    font-weight: 400 !important;
+}
+
+/* Administration link without ID */
+.ast-nav-menu .menu-item:not([id]):not([class*="page_item"]) > a {
+    font-family: 'Syne', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    color: #000000 !important;
+    text-decoration: none !important;
+    padding: 0 20px !important;
+    line-height: 80px !important;
+    display: flex !important;
+    align-items: center !important;
+}
