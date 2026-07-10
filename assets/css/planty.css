@@ -208,3 +208,26 @@ body.planty input.wpcf7-submit:hover {
         text-align: center;
     }
 }
+
+/* 8. CORRECTIONS RESPONSIVE DU CONTENU (mobile) ---------
+   Sur mobile, le titre du hero était bloqué à ~183px de large
+   (réglage hérité du desktop) et cassait mot par mot.
+   On lui rend toute la largeur de son conteneur. */
+@media (max-width: 767px) {
+    .elementor-element-438f73e {
+        width: 100% !important;
+    }
+    .elementor-element-438f73e .elementor-heading-title {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Sur très petit écran, on réduit la taille du titre du hero
+   pour que même les mots longs (ÉNERGISANTE, NATURELLE) tiennent. */
+@media (max-width: 480px) {
+    .elementor-element-438f73e .elementor-heading-title {
+        font-size: 24px !important;
+        line-height: 1.25 !important;
+    }
+}
