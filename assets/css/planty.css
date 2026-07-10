@@ -159,34 +159,25 @@ body.planty input.wpcf7-submit:hover {
     background-color: var(--rose) !important;
 }
 
-/* 6. PIED DE PAGE --------------------------------------- */
+/* 6. PIED DE PAGE (maquette : "Mentions légales", noir sur fond blanc) --- */
 .planty-footer {
-    background-color: var(--creme);
-    padding: 2.5rem 0;
-    margin-top: 3rem;
-}
-
-.planty-footer__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-}
-
-.planty-footer__nav ul {
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    background-color: var(--blanc);
+    padding: 2rem 0;
+    border-top: 1px solid #eee;
 }
 
 .planty-footer__legal {
-    width: 100%;
+    margin: 0;
     text-align: center;
-    font-size: 0.85rem;
-    color: #7a6f66;
+    font-size: 1rem;
+}
+
+.planty-footer__legal a {
+    color: #000000;
+}
+
+.planty-footer__legal a:hover {
+    text-decoration: underline;
 }
 
 /* 7. RESPONSIVE (jusqu'à 320px) ------------------------- */
