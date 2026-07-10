@@ -36,12 +36,15 @@ function planty_enqueue_assets() {
         null
     );
 
-    // Notre CSS ; dépend du style enfant (ctc-style) pour se charger après lui
+    // Notre CSS ; dépend du style enfant (ctc-style) pour se charger après lui.
+    // Version = date de modif du fichier (filemtime) : le cache navigateur se
+    // met à jour automatiquement à chaque modification du CSS.
+    $planty_css = get_stylesheet_directory() . '/assets/css/planty.css';
     wp_enqueue_style(
         'planty-main',
         get_stylesheet_directory_uri() . '/assets/css/planty.css',
         array( 'chld_thm_cfg_separate' ),
-        wp_get_theme()->get( 'Version' )
+        file_exists( $planty_css ) ? filemtime( $planty_css ) : '1.0'
     );
 }
 add_action( 'wp_enqueue_scripts', 'planty_enqueue_assets', 20 );
