@@ -1,0 +1,192 @@
+/* =========================================================
+   PLANTY — Feuille de style des templates codés (thème enfant)
+   Projet 6 OpenClassrooms — HTML / CSS
+   ---------------------------------------------------------
+   Organisation :
+   1. Variables (charte : couleurs + typo)
+   2. Base (reset léger + réglages globaux)
+   3. Conteneur
+   4. En-tête (header) + menu
+   5. Boutons
+   6. Pied de page (footer)
+   7. Responsive (jusqu'à 320px)
+   ========================================================= */
+
+/* 1. VARIABLES ------------------------------------------- */
+:root {
+    --vert: #3b8e46;        /* titres, éléments nature */
+    --vert-fonce: #4e7a44;  /* fond section "Commander" */
+    --rose: #d2776a;        /* logo, titres alternés */
+    --rose-clair: #dc9f96;  /* boutons */
+    --creme: #ece2da;       /* fond clair (hero, sections) */
+    --blanc: #ffffff;
+    --texte: #333333;
+    --largeur-max: 1200px;
+}
+
+/* 2. BASE ------------------------------------------------ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body.planty {
+    margin: 0;
+    font-family: "Syne", sans-serif;
+    color: var(--texte);
+    background-color: var(--blanc);
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    font-family: "Syne", sans-serif;
+    margin: 0 0 0.5em;
+}
+
+/* 3. CONTENEUR ------------------------------------------- */
+.planty-container {
+    width: 100%;
+    max-width: var(--largeur-max);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 4. EN-TÊTE -------------------------------------------- */
+.planty-header {
+    background-color: var(--blanc);
+    border-bottom: 1px solid #f0e9e2;
+}
+
+.planty-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80px;
+}
+
+.planty-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--rose);
+    text-transform: uppercase;
+}
+
+.planty-logo span {
+    color: var(--vert); /* la petite feuille / accent */
+}
+
+/* Menu principal (wp_nav_menu) */
+.planty-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.planty-nav a {
+    font-size: 1rem;
+    color: var(--texte);
+    transition: color 0.2s;
+}
+
+.planty-nav a:hover {
+    color: var(--vert);
+}
+
+/* L'item "Commander" s'affiche comme un bouton.
+   On cible par son lien (/commander) : robuste quel que soit l'ordre du menu
+   et sans être perturbé par le lien "Admin" ajouté par le hook. */
+.planty-nav a[href*="/commander"] {
+    background-color: var(--rose-clair);
+    color: var(--blanc);
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+}
+
+.planty-nav a[href*="/commander"]:hover {
+    background-color: var(--rose);
+    color: var(--blanc);
+}
+
+/* 5. BOUTONS -------------------------------------------- */
+.planty-btn {
+    display: inline-block;
+    background-color: var(--rose-clair);
+    color: var(--blanc);
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.planty-btn:hover {
+    background-color: var(--rose);
+}
+
+/* 6. PIED DE PAGE --------------------------------------- */
+.planty-footer {
+    background-color: var(--creme);
+    padding: 2.5rem 0;
+    margin-top: 3rem;
+}
+
+.planty-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.planty-footer__nav ul {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.planty-footer__legal {
+    width: 100%;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #7a6f66;
+}
+
+/* 7. RESPONSIVE (jusqu'à 320px) ------------------------- */
+@media (max-width: 768px) {
+    .planty-header__inner {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .planty-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .planty-footer__inner {
+        flex-direction: column;
+        text-align: center;
+    }
+}
