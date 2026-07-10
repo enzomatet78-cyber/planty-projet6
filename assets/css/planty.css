@@ -232,3 +232,29 @@ body.planty input.wpcf7-submit:hover {
         letter-spacing: 1px !important;
     }
 }
+
+/* Feuilles décoratives du hero (Accueil) : on adapte leur taille au format.
+   Sur desktop elles encadrent la canette ; sur tablette/mobile elles
+   prendraient tout l'écran en s'empilant, donc on les réduit. */
+@media (max-width: 1024px) {
+    .elementor-element-fc9c40c img,
+    .elementor-element-3441e5f img {
+        max-width: 200px !important;
+        height: auto !important; /* annule la hauteur fixe 450px d'Elementor */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .elementor-element-fc9c40c img,
+    .elementor-element-3441e5f img {
+        max-width: 120px !important;
+        height: auto !important;
+    }
+    /* Hero : on enlève la hauteur mini de 800px sur mobile pour supprimer
+       le vide au-dessus du titre (la section s'ajuste au contenu). */
+    .elementor-element-d1c332a {
+        min-height: auto !important;
+    }
+}
