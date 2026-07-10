@@ -230,4 +230,14 @@ body.planty input.wpcf7-submit:hover {
         font-size: 24px !important;
         line-height: 1.25 !important;
     }
+    /* Titre "COMMANDER" (page précommande) : tenir sur une ligne */
+    .elementor-element-b496b6f .elementor-heading-title {
+        font-size: 26px !important;
+    }
+    /* Titre "NOUS RENCONTRER" : éviter la coupure au milieu du mot
+       (ce titre a un fort letter-spacing, on réduit un peu plus). */
+    .elementor-element-ed2937c .elementor-heading-title {
+        font-size: 22px !important;
+        letter-spacing: 1px !important;
+    }
 }
