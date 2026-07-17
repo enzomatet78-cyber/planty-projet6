@@ -257,4 +257,10 @@ body.planty input.wpcf7-submit:hover {
     .elementor-element-d1c332a {
         min-height: auto !important;
     }
+
+    /* Section "Ce qu'ils en pensent" : 100px de marge haute prévus pour le
+       desktop, trop sur mobile. */
+    .elementor-element-dbbc83a {
+        padding-top: 40px !important;
+    }
 }
