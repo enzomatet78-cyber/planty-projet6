@@ -65,6 +65,7 @@ h1, h2, h3 {
 
 /* 4. EN-TÊTE -------------------------------------------- */
 .planty-header {
+    position: relative; /* repère pour le bouton "Commander" positionné en absolu */
     background-color: var(--blanc);
     border-bottom: 1px solid #f0e9e2;
 }
@@ -94,7 +95,10 @@ h1, h2, h3 {
     align-items: center;
     gap: 2rem;
     margin: 0;
-    padding: 0;
+    /* 180px : réserve la place du bouton "Commander" (236px) sorti du flux,
+       en conservant l'écart d'environ 80px que montre la maquette entre
+       "Admin" et le bouton. */
+    padding: 0 180px 0 0;
     list-style: none;
 }
 
@@ -110,12 +114,27 @@ h1, h2, h3 {
 
 /* L'item "Commander" s'affiche comme un bouton.
    On cible par son lien (/commander) : robuste quel que soit l'ordre du menu
-   et sans être perturbé par le lien "Admin" ajouté par le hook. */
+   et sans être perturbé par le lien "Admin" ajouté par le hook.
+
+   Maquette : bloc de 236 x 80 px, collé au bord droit de la page et occupant
+   toute la hauteur de l'en-tête, angles droits. Comme le menu est enfermé
+   dans un conteneur de 1200 px centré, on sort le bouton du flux et on le
+   positionne en absolu par rapport à l'en-tête (qui, lui, fait toute la
+   largeur). Le menu reçoit en contrepartie une marge à droite pour ne pas
+   passer sous le bouton. */
 .planty-nav a[href*="/commander"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 236px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 0;
     background-color: var(--rose-clair);
     color: var(--blanc);
-    padding: 0.6rem 1.5rem;
-    border-radius: 4px;
 }
 
 .planty-nav a[href*="/commander"]:hover {
@@ -263,4 +282,19 @@ body.planty input.wpcf7-submit:hover {
     .elementor-element-dbbc83a {
         padding-top: 40px !important;
     }
+}
+
+/* 12. HERO DE L'ACCUEIL --------------------------------- */
+/* La maquette ne coupe pas le bloc hero au carré : son bas décrit un arc
+   très large (le beige descend d'environ 40 px au centre par rapport aux
+   bords). On le reproduit avec un rayon elliptique : 50% sur l'axe
+   horizontal (soit la moitié de la largeur) et 40px sur l'axe vertical.
+
+   Le hero est le premier conteneur Elementor de la page d'accueil. On le
+   cible par sa position plutôt que par la classe personnalisée : Elementor
+   n'ajoute pas les classes personnalisées sur les conteneurs de premier
+   niveau. */
+body.page-id-11 .elementor > .e-con:first-child {
+    border-bottom-left-radius: 50% 40px;
+    border-bottom-right-radius: 50% 40px;
 }

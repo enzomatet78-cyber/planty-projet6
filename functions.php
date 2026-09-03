@@ -60,9 +60,20 @@ function ajouter_lien_admin($items, $args) {
         return $items;
     }
 
-    $items .= '<li class="menu-item">
+    $admin = '<li class="menu-item menu-item-admin">
                   <a href="' . admin_url() . '">Admin</a>
                </li>';
+
+    // La maquette place « Admin » AVANT le bouton « Commander », qui est le
+    // dernier élément du menu. On insère donc le lien juste avant ce dernier
+    // <li> au lieu de l'ajouter à la fin.
+    $position = strrpos( $items, '<li' );
+
+    if ( false !== $position ) {
+        $items = substr( $items, 0, $position ) . $admin . substr( $items, $position );
+    } else {
+        $items .= $admin;
+    }
 
     return $items;
 }
