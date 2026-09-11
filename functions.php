@@ -79,3 +79,23 @@ function ajouter_lien_admin($items, $args) {
 }
 
 add_filter('wp_nav_menu_items', 'ajouter_lien_admin', 10, 2);
+/**
+ * Page Commander : charge le script des boutons + / − et Ok des parfums.
+ * is_page( 'commander' ) : le fichier n'est chargé que sur cette page,
+ * inutile de l'imposer aux visiteurs des autres pages.
+ */
+function planty_script_commande() {
+    if ( ! is_page( 'commander' ) ) {
+        return;
+    }
+
+    $fichier = get_stylesheet_directory() . '/assets/js/commande.js';
+    wp_enqueue_script(
+        'planty-commande',
+        get_stylesheet_directory_uri() . '/assets/js/commande.js',
+        array(),                                          // aucune dépendance (pas besoin de jQuery)
+        file_exists( $fichier ) ? filemtime( $fichier ) : '1.0',
+        true                                              // en bas de page : le HTML est déjà chargé
+    );
+}
+add_action( 'wp_enqueue_scripts', 'planty_script_commande' );

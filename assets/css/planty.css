@@ -284,17 +284,3 @@ body.planty input.wpcf7-submit:hover {
     }
 }
 
-/* 12. HERO DE L'ACCUEIL --------------------------------- */
-/* La maquette ne coupe pas le bloc hero au carré : son bas décrit un arc
-   très large (le beige descend d'environ 40 px au centre par rapport aux
-   bords). On le reproduit avec un rayon elliptique : 50% sur l'axe
-   horizontal (soit la moitié de la largeur) et 40px sur l'axe vertical.
-
-   Le hero est le premier conteneur Elementor de la page d'accueil. On le
-   cible par sa position plutôt que par la classe personnalisée : Elementor
-   n'ajoute pas les classes personnalisées sur les conteneurs de premier
-   niveau. */
-body.page-id-11 .elementor > .e-con:first-child {
-    border-bottom-left-radius: 50% 40px;
-    border-bottom-right-radius: 50% 40px;
-}
