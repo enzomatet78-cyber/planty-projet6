@@ -446,3 +446,65 @@ body.planty input.wpcf7-submit:hover {
         padding-top: 138px !important;
     }
 }
+
+/* 13. NOUS RENCONTRER — HAUT DE PAGE --------------------
+   Maquette : le paragraphe fait 664px de large et tient en 3 lignes
+   (536px et 4 lignes sur le site), et il y a 92px au-dessus du titre
+   contre 20px. */
+@media (min-width: 1025px) {
+    .elementor-element-ff4f09d {
+        width: 664px !important;
+        max-width: 664px !important;
+    }
+
+    .elementor-element-316e834 {
+        padding-top: 50px !important;
+    }
+}
+
+/* 14. NOUS RENCONTRER — FORMULAIRE DE CONTACT -----------
+   Maquette : champs de 383 x 71 px centrés (le site les étalait sur
+   719 px de large et 56 px de haut), zone de message de 237 px,
+   bouton « Envoyer » de 197 x 55 px centré, en #E0B9B4. */
+@media (min-width: 1025px) {
+    body.page-id-8 .wpcf7-form {
+        max-width: 383px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body.page-id-8 .wpcf7-form input[type="text"],
+    body.page-id-8 .wpcf7-form input[type="email"],
+    body.page-id-8 .wpcf7-form textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    body.page-id-8 .wpcf7-form input[type="text"],
+    body.page-id-8 .wpcf7-form input[type="email"] {
+        height: 71px;
+    }
+
+    body.page-id-8 .wpcf7-form textarea {
+        height: 237px;
+    }
+
+    /* Le bouton est dans le dernier paragraphe du formulaire.
+       Contact Form 7 place juste après lui un indicateur de chargement,
+       invisible au repos mais qui occupe de la place : on le sort du flux
+       pour qu'il ne décale pas le centrage. */
+    body.page-id-8 .wpcf7-form p:last-of-type {
+        position: relative;
+        text-align: center;
+    }
+
+    body.page-id-8 .wpcf7-form input.wpcf7-submit {
+        padding: 18px 64px;
+        background-color: #e0b9b4 !important;
+    }
+
+    body.page-id-8 .wpcf7-form .wpcf7-spinner {
+        position: absolute;
+        margin-left: 12px;
+    }
+}
