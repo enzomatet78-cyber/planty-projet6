@@ -373,3 +373,76 @@ body.planty input.wpcf7-submit:hover {
         max-width: 858px !important;
     }
 }
+
+/* 11. ACCUEIL — SECTION « LES GOÛTS » --------------------
+   Maquette : 4 cartes de 393 x 262 px, avec 30px d'écart horizontal
+   et 40px vertical, soit un bloc de 816px de large. Le site affichait
+   des cartes de 379 x 216 px avec 20px d'écart partout, et elles se
+   touchaient presque.
+   Elementor écrit ses règles avec une spécificité élevée
+   (.elementor-11 .elementor-element.elementor-element-xxx), d'où
+   le !important. */
+@media (min-width: 1025px) {
+    .elementor-element-c8cb22f {
+        max-width: 816px !important;
+        column-gap: 30px !important;
+        row-gap: 40px !important;
+    }
+
+    .elementor-element-527b854,
+    .elementor-element-64cf320,
+    .elementor-element-539a2b9,
+    .elementor-element-d0e3c4e {
+        width: 393px !important;
+        min-height: 262px !important;
+    }
+}
+
+/* 12. ACCUEIL — RYTHME VERTICAL --------------------------
+   Écarts relevés sur la maquette (écran de 1440px), comparés à ceux
+   du site. Elementor ayant une spécificité élevée, on force avec
+   !important. */
+@media (min-width: 1025px) {
+    /* Le bloc hero de la maquette fait 849px de haut (de 80 à 929). */
+    .elementor-element-d1c332a {
+        min-height: 849px !important;
+        /* La maquette aligne le contenu du hero vers le haut (108px sous
+           l'en-tête), alors qu'Elementor le centre verticalement : agrandir
+           le bloc poussait donc le titre vers le bas. */
+        justify-content: flex-start !important;
+    }
+
+    /* Titre : 108px sous l'en-tête sur la maquette, 141px sur le site. */
+    .elementor-element-438f73e {
+        margin-top: 100px !important;
+    }
+
+    /* Canette et feuilles : 64px plus bas que sur le site. */
+    .elementor-element-37becfc {
+        padding-top: 64px !important;
+    }
+
+    /* « L'énergie des plantes » : 60px sous la courbe, contre 13px. */
+    .elementor-element-40a9bcd {
+        margin-top: 131px !important;
+    }
+
+    /* Cartes des goûts : 49px sous le texte, contre 34px. */
+    .elementor-element-c8cb22f {
+        margin-top: 15px !important;
+    }
+
+    /* Bouton : 47px sous les cartes, et 197 x 55 px comme la maquette. */
+    .elementor-element-4cecc3d {
+        margin-top: 17px !important;
+    }
+
+    .elementor-element-4cecc3d .elementor-button {
+        padding: 18px 56px !important;
+    }
+
+    /* Section « Ce qu'ils en pensent » : 30px sous le bouton, contre 11px. */
+    .elementor-element-dbbc83a {
+        padding-top: 138px !important;
+    }
+}
