@@ -516,4 +516,27 @@ body.planty input.wpcf7-submit:hover {
         position: absolute;
         margin-left: 12px;
     }
+
+    /* Petite plante décorative de la maquette, à gauche de la zone de
+       message : 88 x 141 px, débordant de 57px à gauche du formulaire et
+       de 39px sous le champ. Elle passe par-dessus le champ, comme sur la
+       maquette ; pointer-events: none l'empêche de gêner la saisie.
+       p:has(textarea) se lit : « le paragraphe qui contient la zone de
+       texte ». */
+    body.page-id-8 .wpcf7-form p:has(textarea) {
+        position: relative;
+    }
+
+    body.page-id-8 .wpcf7-form p:has(textarea)::before {
+        content: "";
+        position: absolute;
+        left: -62px;
+        bottom: -34px;
+        /* Group-16.png fait 185 x 178 px : on garde ses proportions
+           (sinon l'image flotte dans un cadre trop haut). */
+        width: 112px;
+        height: 108px;
+        background: url("/wp-content/uploads/2026/03/Group-16.png") no-repeat center / contain;
+        pointer-events: none;
+    }
 }
