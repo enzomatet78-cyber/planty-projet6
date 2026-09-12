@@ -66,6 +66,7 @@ h1, h2, h3 {
 /* 4. EN-TÊTE -------------------------------------------- */
 .planty-header {
     position: relative; /* repère pour le bouton "Commander" positionné en absolu */
+    z-index: 10;        /* l'en-tête reste au-dessus du contenu des pages */
     background-color: var(--blanc);
     border-bottom: 1px solid #f0e9e2;
 }
@@ -211,6 +212,20 @@ body.planty input.wpcf7-submit:hover {
         flex-wrap: wrap;
         justify-content: center;
         gap: 1rem;
+        /* On annule la réserve de 180px : elle ne sert qu'au bouton
+           positionné en absolu, qui repasse dans le flux ci-dessous. */
+        padding: 0;
+    }
+
+    /* Le bouton "Commander" redevient un bouton normal, dans le flux.
+       En absolu avec sa largeur fixe de 236px, il recouvrait le logo et
+       le menu dès que l'écran devenait étroit. */
+    .planty-nav a[href*="/commander"] {
+        position: static;
+        width: auto;
+        height: auto;
+        padding: 0.6rem 1.5rem;
+        border-radius: 4px;
     }
 
     .planty-footer__inner {
@@ -284,3 +299,13 @@ body.planty input.wpcf7-submit:hover {
     }
 }
 
+/* 9. TITRE DU HERO EN TABLETTE / MOBILE -----------------
+   Dans Elementor, ce titre porte un réglage « translateY : -169px »
+   défini dans la vue tablette. Il remontait le titre par-dessus
+   l'en-tête sur tous les écrans de moins de 1025px.
+   On annule ce décalage : le titre reprend sa place dans le flux. */
+@media (max-width: 1024px) {
+    .elementor-element-438f73e {
+        transform: none !important;
+    }
+}
