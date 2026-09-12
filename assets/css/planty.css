@@ -83,10 +83,12 @@ h1, h2, h3 {
    dans le conteneur de 1200px : il va jusqu'à 1141px, soit 63px avant
    le bouton "Commander" qui occupe les 236px de droite.
    L'en-tête sort donc du conteneur classique. */
-.planty-header .planty-container {
-    max-width: none;
-    padding-left: 36px;
-    padding-right: 0;
+@media (min-width: 769px) {
+    .planty-header .planty-container {
+        max-width: none;
+        padding-left: 36px;
+        padding-right: 0;
+    }
 }
 
 .planty-logo {
