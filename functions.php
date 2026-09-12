@@ -99,3 +99,40 @@ function planty_script_commande() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'planty_script_commande' );
+
+/**
+ * Ajoute au mail de précommande le nombre total de bouteilles commandées.
+ *
+ * Contact Form 7 ne sait pas additionner des champs : il se contente de
+ * remplacer chaque balise par la valeur saisie. On crée donc une « balise
+ * spéciale » [_total_bouteilles], utilisable dans le sujet et le corps du
+ * mail comme n'importe quelle autre balise.
+ *
+ * Le filtre wpcf7_special_mail_tags est appelé pour chaque balise commençant
+ * par un souligné. On ne répond qu'à la nôtre et on laisse les autres passer.
+ */
+add_filter( 'wpcf7_special_mail_tags', 'planty_total_bouteilles', 10, 4 );
+function planty_total_bouteilles( $sortie, $nom, $html, $balise ) {
+
+    if ( '_total_bouteilles' !== $nom && 'total_bouteilles' !== $nom ) {
+        return $sortie;
+    }
+
+    // Les données envoyées par le formulaire qui vient d'être soumis.
+    $envoi = WPCF7_Submission::get_instance();
+
+    if ( ! $envoi ) {
+        return $sortie;
+    }
+
+    $donnees = $envoi->get_posted_data();
+    $total   = 0;
+
+    foreach ( array( 'fraise', 'pamplemousse', 'framboise', 'citron' ) as $parfum ) {
+        if ( isset( $donnees[ $parfum ] ) ) {
+            $total += (int) $donnees[ $parfum ];
+        }
+    }
+
+    return $total;
+}

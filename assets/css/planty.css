@@ -315,6 +315,15 @@ body.planty input.wpcf7-submit:hover {
         margin-left: auto;
         margin-right: auto;
     }
+
+    /* Les blocs qui contiennent ces images gardent leur largeur de bureau
+       (335px) : celui de droite sortait de l'écran et provoquait un
+       défilement horizontal (490px pour un écran de 375). On masque ce qui
+       dépasse du hero plutôt que de rétrécir les blocs, ce qui casserait
+       la symétrie des deux feuilles autour de la canette. */
+    .elementor-element-d1c332a {
+        overflow-x: hidden !important;
+    }
 }
 
 @media (max-width: 767px) {
