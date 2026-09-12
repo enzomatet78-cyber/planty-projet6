@@ -540,3 +540,26 @@ body.planty input.wpcf7-submit:hover {
         pointer-events: none;
     }
 }
+
+/* 15. NOUS RENCONTRER — BRANCHE DÉCORATIVE --------------
+   Widget image ajouté dans Elementor (la cliente peut donc le déplacer
+   ou changer l'image depuis l'éditeur). Ici on ne fait que le placer :
+   la maquette le met à droite de l'équipe, 181px de large, à 72px du
+   bord droit de la page. */
+@media (min-width: 1025px) {
+    .elementor-element-7f4c738 {
+        position: relative;
+    }
+
+    /* Elementor applique « .elementor-widget { position: relative } » et
+       charge sa feuille après la nôtre : sans !important, le widget reste
+       dans le flux et s'affiche sous l'équipe. */
+    .elementor-element-b4a7c10 {
+        position: absolute !important;
+        right: 60px;
+        bottom: 51px;
+        /* 192px de cadre pour 181px de feuillage visible : le PNG a des
+           marges transparentes. */
+        width: 192px;
+    }
+}
