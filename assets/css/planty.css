@@ -78,10 +78,23 @@ h1, h2, h3 {
     min-height: 80px;
 }
 
+/* Mesures relevées sur la maquette (écran de 1440px) :
+   le logo commence à 37px du bord gauche, et le menu n'est pas centré
+   dans le conteneur de 1200px : il va jusqu'à 1141px, soit 63px avant
+   le bouton "Commander" qui occupe les 236px de droite.
+   L'en-tête sort donc du conteneur classique. */
+.planty-header .planty-container {
+    max-width: none;
+    padding-left: 36px;
+    padding-right: 0;
+}
+
 .planty-logo {
     font-size: 1.8rem;
     font-weight: 800;
-    letter-spacing: 0.05em;
+    /* Maquette : logo de 201px de large. L'espacement des lettres
+       l'élargissait de 10px. */
+    letter-spacing: normal;
     color: var(--rose);
     text-transform: uppercase;
 }
@@ -94,12 +107,12 @@ h1, h2, h3 {
 .planty-nav ul {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    /* Maquette : 61px entre "Nous rencontrer" et "Admin". */
+    gap: 60px;
     margin: 0;
-    /* 180px : réserve la place du bouton "Commander" (236px) sorti du flux,
-       en conservant l'écart d'environ 80px que montre la maquette entre
-       "Admin" et le bouton. */
-    padding: 0 180px 0 0;
+    /* 299px = les 236px du bouton "Commander" (sorti du flux, collé à
+       droite) + les 63px qui le séparent du dernier lien du menu. */
+    padding: 0 299px 0 0;
     list-style: none;
 }
 
@@ -123,15 +136,24 @@ h1, h2, h3 {
    positionne en absolu par rapport à l'en-tête (qui, lui, fait toute la
    largeur). Le menu reçoit en contrepartie une marge à droite pour ne pas
    passer sous le bouton. */
-.planty-nav a[href*="/commander"] {
+/* On sort du flux le <li> entier, et pas seulement le lien : sinon il
+   resterait dans le menu un élément vide, avant lequel l'écart de 60px
+   s'appliquerait quand même (le dernier lien s'arrêtait 60px trop tôt).
+   li:has(...) se lit : "le <li> qui contient ce lien". */
+.planty-nav li:has(a[href*="/commander"]) {
     position: absolute;
     top: 0;
     right: 0;
     width: 236px;
     height: 80px;
+}
+
+.planty-nav a[href*="/commander"] {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
     padding: 0;
     border-radius: 0;
     background-color: var(--rose-clair);
@@ -173,6 +195,15 @@ body.planty input.wpcf7-submit {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
+}
+
+/* Page Commander : la maquette donne au bouton d'envoi 197 x 55 px et la
+   teinte #E0B9B4, plus claire que le rose des autres boutons.
+   La règle ci-dessus (body.planty input.wpcf7-submit) est plus spécifique
+   que la classe seule : on ajoute donc la classe à ce même sélecteur. */
+body.planty input.wpcf7-submit.btn-commander {
+    padding: 20px 42px;
+    background-color: #e0b9b4 !important;
 }
 
 body.planty input.wpcf7-submit:hover {
@@ -220,9 +251,13 @@ body.planty input.wpcf7-submit:hover {
     /* Le bouton "Commander" redevient un bouton normal, dans le flux.
        En absolu avec sa largeur fixe de 236px, il recouvrait le logo et
        le menu dès que l'écran devenait étroit. */
-    .planty-nav a[href*="/commander"] {
+    .planty-nav li:has(a[href*="/commander"]) {
         position: static;
         width: auto;
+        height: auto;
+    }
+
+    .planty-nav a[href*="/commander"] {
         height: auto;
         padding: 0.6rem 1.5rem;
         border-radius: 4px;
@@ -307,5 +342,32 @@ body.planty input.wpcf7-submit:hover {
 @media (max-width: 1024px) {
     .elementor-element-438f73e {
         transform: none !important;
+    }
+}
+
+/* 10. LARGEUR DU CONTENU (page Commander) ----------------
+   Mesures relevées sur la maquette (écran de 1440px) : le bloc
+   "Votre commande" + formulaire va de 292px à 1150px, soit 858px
+   de large, centré. Les cartes parfum y font alors 192px, la valeur
+   de la maquette. Elementor utilise par défaut 1140px, d'où des
+   cartes de 262px et des marges latérales trop faibles.
+   On ne touche pas au titre "COMMANDER", qui est centré. */
+/* Maquette : 78px entre le bas de l'en-tête et le titre COMMANDER
+   (le site n'en avait que 64), et le fond vert descend 24px plus bas
+   avant le pied de page. */
+.elementor-element-ad77e4e {
+    padding-top: 14px;
+}
+
+.elementor-element-a6c43a4 {
+    padding-bottom: 24px;
+}
+
+@media (min-width: 1025px) {
+    /* Elementor charge ses feuilles de style APRÈS la nôtre et impose
+       max-width: min(100%, 1140px). À spécificité égale, c'est la règle
+       la plus tardive qui gagne : d'où !important. */
+    .elementor-element-a6c43a4 > .e-con-inner {
+        max-width: 858px !important;
     }
 }
